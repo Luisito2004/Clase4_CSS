@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Levantamiento de requisitos de Netplus</title>
+	<link rel="icon" type="image/png" href="img/icon.png">
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+	<header>
+		<img src="img/cover.jpg" alt="Campus de la Universidad Técnica Particular de Loja">
+		<img src="img/icon.png" alt="Logo de la UTPL" width="80" height="80">
+		<h1>Levantamiento de requisitos de Netplus</h1>
+	</header>
+	<nav aria-label="Contenido">
+		<a href="#funcionales">Requisitos funcionales</a>
+		<a href="#no-funcionales">Requisitos no funcionales</a>
+		<a href="#prototipos">Prototipos</a>
+		<a href="#tecnologias">Tecnologías</a>
+	</nav>
+	<main>
+		<section id="funcionales">
+<h2>1. Requisitos funcionales</h2>
+		<p>Los siguientes requisitos expresan las funciones identificadas en la reunión. Se utiliza la forma «el sistema
+			deberá» para facilitar su evaluación posterior. Cuando la operación exacta todavía depende de aclaraciones,
+			esto se indica en la observación correspondiente. Las prioridades son una propuesta inicial del equipo, no una
+			clasificación formalmente aprobada por Netplus.</p>
+		<details>
+			<summary>RF-01. Importación de reportes detallados de marcaciones</summary>
+			<table>
+			<tbody>
+				<tr>
+					<th scope="row">Descripción</th>
+					<td>El sistema deberá permitir incorporar el reporte de marcaciones exportado desde la plataforma actual
+						de Netplus.</td>
+				</tr>
+				<tr>
+					<th scope="row">Entradas</th>
+					<td>Archivo Excel de marcaciones de los colaboradores, correspondiente al período seleccionado.</td>
+				</tr>
+				<tr>
+					<th scope="row">Proceso esperado</th>
+					<td>Leer la información de fecha y hora, tipo de marcación y origen de registro; asociar los registros
+						con el colaborador correspondiente. Deberá contemplarse el formato mostrado en la reunión, en el que
+						cada hoja corresponde a un trabajador.</td>
+				</tr>
+				<tr>
+					<th scope="row">Salidas</th>
+					<td>Marcaciones disponibles para las consultas y resúmenes de asistencia.</td>
+				</tr>
+				<tr>
+					<th scope="row">Criterio de verificación (propuesto)</th>
+					<td>Al incorporar un archivo de ejemplo, se identifican los colaboradores y sus marcaciones sin confundir
+						registros entre hojas.</td>
+				</tr>
+				<tr>
+					<th scope="row">Referencia de la reunión</th>
+					<td>21:11–22:03; demostración de exportación 18:09–20:28.</td>
+				</tr>
+				<tr>
+					<th scope="row">Prioridad inicial</th>
+					<td>Alta (propuesta)</td>
+				</tr>
+				<tr>
+					<th scope="row">Punto por validar</th>
+					<td>Se requiere una muestra real de Excel para definir columnas, identificadores y criterios ante
+						archivos repetidos.</td>
+				</tr>
+			</tbody>
+		</table>
+		</details>
+		<details>
+			<summary>RF-02. Importación del resumen de marcación mensual</summary>
+			<table>
+			<tbody>
+				<tr>
+					<th scope="row">Descripción</th>
+					<td>El sistema deberá considerar la información del reporte mensual de marcaciones mostrado por Netplus,
+						en el que se presentan datos de varios colaboradores en una sola hoja.</td>
+				</tr>
+				<tr>
+					<th scope="row">Entradas</th>
+					<td>Archivo Excel de marcación mensual generado por la plataforma actual.</td>
+				</tr>
+				<tr>
+					<th scope="row">Proceso esperado</th>
+					<td>Interpretar el resumen por colaborador y período, sin asumir que las columnas o estructuras son
+						iguales a las del reporte detallado.</td>
+				</tr>
+				<tr>
+					<th scope="row">Salidas</th>
+					<td>Resumen mensual utilizable para consultas y conciliación de novedades.</td>
+				</tr>
+				<tr>
+					<th scope="row">Criterio de verificación (propuesto)</th>
+					<td>Una muestra del reporte puede procesarse y relacionarse correctamente con los colaboradores.</td>
+				</tr>
+				<tr>
+					<th scope="row">Referencia de la reunión</th>
+					<td>11:42–13:14.</td>
+				</tr>
+				<tr>
+					<th scope="row">Prioridad inicial</th>
+					<td>Media (propuesta)</td>
+				</tr>
+				<tr>
+					<th scope="row">Punto por validar</th>
+					<td>Debe definirse si es indispensable procesar los dos tipos de reporte o si uno de ellos basta para los
+						indicadores y la nómina.</td>
+				</tr>
+			</tbody>
+		</table>
+		</details>
+		<details>
+			<summary>RF-03. Incorporación de permisos y sus estados de aprobación</summary>
+			<table>
+			<tbody>
+				<tr>
+					<th scope="row">Descripción</th>
+					<td>El sistema deberá permitir consultar las novedades registradas en el reporte de permisos e
+						identificar cuáles fueron aprobadas.</td>
+				</tr>
+				<tr>
+					<th scope="row">Entradas</th>
+					<td>Reporte Excel de permisos: colaborador, fechas u horas, motivo y estado de aprobación, según las
+						columnas disponibles.</td>
+				</tr>
+				<tr>
+					<th scope="row">Proceso esperado</th>
+					<td>Vincular los permisos a los colaboradores y distinguir al menos los estados «Aprobado» y «Pendiente».
+						Los permisos pendientes no deberán contabilizarse como justificaciones aprobadas.</td>
+				</tr>
+				<tr>
+					<th scope="row">Salidas</th>
+					<td>Registro consultable de permisos y estado utilizado en la revisión de asistencia.</td>
+				</tr>
+				<tr>
+					<th scope="row">Criterio de verificación (propuesto)</th>
+					<td>Un permiso aprobado se considera justificado y uno pendiente no se incorpora como aprobación válida.
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">Referencia de la reunión</th>
+					<td>11:42–13:14; 22:42–23:44.</td>
+				</tr>
+				<tr>
+					<th scope="row">Prioridad inicial</th>
+					<td>Alta (propuesta)</td>
+				</tr>
+				<tr>
+					<th scope="row">Punto por validar</th>
+					<td>Falta definir qué ocurre con permisos rechazados, anulados o modificados después de una primera
+						carga.</td>
+				</tr>
+			</tbody>
+		</table>
+		</details>
+		<details>
+			<summary>RF-04. Incorporación de registros de horas extras</summary>
+			<table>
+			<tbody>
+				<tr>
+					<th scope="row">Descripción</th>
+					<td>El sistema deberá considerar los registros de horas adicionales gestionados en la plataforma de
+						asistencia para su posterior consulta y resumen.</td>
+				</tr>
+				<tr>
+					<th scope="row">Entradas</th>
+					<td>Información de horas extras disponible en el sistema actual y su reporte de exportación, por
+						confirmar.</td>
+				</tr>
+				<tr>
+					<th scope="row">Proceso esperado</th>
+					<td>Relacionar las horas adicionales con el colaborador y el período; verificar las condiciones de
+						aprobación y clasificación una vez documentadas.</td>
+				</tr>
+				<tr>
+					<th scope="row">Salidas</th>
+					<td>Datos de horas adicionales preparados para resúmenes diarios y mensuales.</td>
+				</tr>
+				<tr>
+					<th scope="row">Criterio de verificación (propuesto)</th>
+					<td>El sistema distingue los registros cargados por empleado y período sin asignar horas a otra persona.
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">Referencia de la reunión</th>
+					<td>00:00–01:48; 23:54–24:05.</td>
+				</tr>
+				<tr>
+					<th scope="row">Prioridad inicial</th>
+					<td>Alta (propuesta)</td>
+				</tr>
+				<tr>
+					<th scope="row">Punto por validar</th>
+					<td>La explicación del flujo de horas extras quedó interrumpida; se requiere el archivo de ejemplo y las
+						reglas de aprobación y cálculo.</td>
+				</tr>
+			</tbody>
+		</table>
+		</details>
+		<details>
+			<summary>RF-05. Actualización diaria de la información de asistencia</summary>
+			<table>
+			<tbody>
+				<tr>
+					<th scope="row">Descripción</th>
+					<td>El sistema deberá facilitar la revisión de las marcaciones correspondientes al día anterior, una vez
+						finalizada la jornada de los turnos.</td>
+				</tr>
+				<tr>
+					<th scope="row">Entradas</th>
+					<td>Reportes disponibles al inicio del siguiente día de trabajo.</td>
+				</tr>
+				<tr>
+					<th scope="row">Proceso esperado</th>
+					<td>Incorporar los datos actualizados y generar la información necesaria para la revisión diaria. Si se
+						realizan nuevas cargas, deberá definirse cómo se actualizan los resultados existentes.</td>
+				</tr>
+				<tr>
+					<th scope="row">Salidas</th>
+					<td>Información del día anterior lista para consulta por Recursos Humanos.</td>
+				</tr>
+				<tr>
+					<th scope="row">Criterio de verificación (propuesto)</th>
+					<td>Al cargar los registros de un día completo, el resumen corresponde a esa fecha y no mezcla períodos.
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">Referencia de la reunión</th>
+					<td>10:35–10:49; 22:19–23:44.</td>
+				</tr>
+				<tr>
+					<th scope="row">Prioridad inicial</th>
+					<td>Alta (propuesta)</td>
+				</tr>
+				<tr>
+					<th scope="row">Punto por validar</th>
+					<td>No se acordó si la actualización será automática, mediante carga manual o combinando ambos
+						mecanismos.</td>
+				</tr>
+			</tbody>
+		</table>
+		</details>
+		<details>
+			<summary>RF-06. Identificación de atrasos y ausencias</summary>
+			<table>
+			<tbody>
+				<tr>
+					<th scope="row">Descripción</th>
+					<td>El sistema deberá presentar qué colaboradores registraron atrasos y ausencias en el período
+						consultado.</td>
+				</tr>
+				<tr>
+					<th scope="row">Entradas</th>
+					<td>Marcaciones, información de jornada u horarios y, cuando corresponda, permisos asociados.</td>
+				</tr>
+				<tr>
+					<th scope="row">Proceso esperado</th>
+					<td>Comparar las marcaciones disponibles con la información requerida para determinar retrasos y
+						ausencias. Aplicar reglas específicas una vez confirmadas por Netplus.</td>
+				</tr>
+				<tr>
+					<th scope="row">Salidas</th>
+					<td>Listado o resumen de colaboradores con atrasos y ausencias.</td>
+				</tr>
+				<tr>
+					<th scope="row">Criterio de verificación (propuesto)</th>
+					<td>Los casos preparados como prueba aparecen clasificados de acuerdo con la regla de horario aprobada.
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">Referencia de la reunión</th>
+					<td>00:00–01:48; 03:16–03:41; 06:26–07:07.</td>
+				</tr>
+				<tr>
+					<th scope="row">Prioridad inicial</th>
+					<td>Alta (propuesta)</td>
+				</tr>
+				<tr>
+					<th scope="row">Punto por validar</th>
+					<td>Debe confirmarse de dónde se obtendrán los horarios y qué tolerancias se aplican a los atrasos.</td>
+				</tr>
+			</tbody>
+		</table>
+		</details>
+		<details>
+			<summary>RF-07. Diferenciación de ausencias justificadas y pendientes</summary>
+			<table>
+			<tbody>
+				<tr>
+					<th scope="row">Descripción</th>
+					<td>El sistema deberá distinguir las ausencias respaldadas por permisos aprobados de aquellas que todavía
+						no cuentan con una aprobación registrada.</td>
+				</tr>
+				<tr>
+					<th scope="row">Entradas</th>
+					<td>Ausencias detectadas y reporte de permisos con sus estados.</td>
+				</tr>
+				<tr>
+					<th scope="row">Proceso esperado</th>
+					<td>Relacionar las novedades de asistencia con los permisos existentes y respetar la regla comunicada de
+						no considerar «Pendiente» como aprobado.</td>
+				</tr>
+				<tr>
+					<th scope="row">Salidas</th>
+					<td>Resumen de ausencias con su situación de justificación.</td>
+				</tr>
+				<tr>
+					<th scope="row">Criterio de verificación (propuesto)</th>
+					<td>En una prueba con permiso aprobado y pendiente, ambos casos se muestran de manera diferenciada.</td>
+				</tr>
+				<tr>
+					<th scope="row">Referencia de la reunión</th>
+					<td>00:00–01:48; 11:42–13:14; 22:42–23:44.</td>
+				</tr>
+				<tr>
+					<th scope="row">Prioridad inicial</th>
+					<td>Alta (propuesta)</td>
+				</tr>
+				<tr>
+					<th scope="row">Punto por validar</th>
+					<td>No corresponde marcar automáticamente todos los casos sin aprobación como faltas injustificadas
+						definitivas sin validar la política de la empresa.</td>
+				</tr>
+			</tbody>
+		</table>
+		</details>
+		<details>
+			<summary>RF-08. Resumen de horas adicionales y vacaciones</summary>
+			<table>
+			<tbody>
+				<tr>
+					<th scope="row">Descripción</th>
+					<td>El sistema deberá presentar información resumida sobre las horas extras y suplementarias registradas,
+						así como sobre los colaboradores que se encuentren en vacaciones.</td>
+				</tr>
+				<tr>
+					<th scope="row">Entradas</th>
+					<td>Datos de marcaciones, horas adicionales, permisos o reportes equivalentes disponibles.</td>
+				</tr>
+				<tr>
+					<th scope="row">Proceso esperado</th>
+					<td>Agrupar las novedades por colaborador y período; aplicar las reglas de cómputo y clasificación que
+						proporcione Netplus.</td>
+				</tr>
+				<tr>
+					<th scope="row">Salidas</th>
+					<td>Totales o listados de horas adicionales y personal en vacaciones.</td>
+				</tr>
+				<tr>
+					<th scope="row">Criterio de verificación (propuesto)</th>
+					<td>Los valores del resumen coinciden con un conjunto de datos de prueba aceptado por la empresa.</td>
+				</tr>
+				<tr>
+					<th scope="row">Referencia de la reunión</th>
+					<td>00:00–01:48; 03:16–03:41.</td>
+				</tr>
+				<tr>
+					<th scope="row">Prioridad inicial</th>
+					<td>Alta (propuesta)</td>
+				</tr>
+				<tr>
+					<th scope="row">Punto por validar</th>
+					<td>No se definieron fórmulas, recargos legales, franjas horarias ni una fuente definitiva de información
+						de vacaciones.</td>
+				</tr>
+			</tbody>
+		</table>
+		</details>
+		<details>
+			<summary>RF-09. Tablero de seguimiento diario de Recursos Humanos</summary>
+			<table>
+			<tbody>
+				<tr>
+					<th scope="row">Descripción</th>
+					<td>El sistema deberá presentar un tablero que resuma la información diaria necesaria para el control de
+						asistencia del personal.</td>
+				</tr>
+				<tr>
+					<th scope="row">Entradas</th>
+					<td>Resultados de marcaciones, atrasos, ausencias, permisos, vacaciones y horas adicionales procesadas.
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">Proceso esperado</th>
+					<td>Sintetizar las novedades de asistencia en indicadores y detalles consultables que permitan dar
+						seguimiento a los colaboradores.</td>
+				</tr>
+				<tr>
+					<th scope="row">Salidas</th>
+					<td>Dashboard operativo con una visión clara del día consultado.</td>
+				</tr>
+				<tr>
+					<th scope="row">Criterio de verificación (propuesto)</th>
+					<td>Recursos Humanos puede visualizar las principales novedades del día sin revisar manualmente cada hoja
+						del reporte original.</td>
+				</tr>
+				<tr>
+					<th scope="row">Referencia de la reunión</th>
+					<td>00:00–01:48; 03:16–03:41; 06:26–07:07.</td>
+				</tr>
+				<tr>
+					<th scope="row">Prioridad inicial</th>
+					<td>Alta (propuesta)</td>
+				</tr>
+				<tr>
+					<th scope="row">Punto por validar</th>
+					<td>Filtros, gráficos específicos y posibilidad de descargar reportes son detalles de interfaz por
+						definir.</td>
+				</tr>
+			</tbody>
+		</table>
+		</details>
+		<details>
+			<summary>RF-10. Consolidado mensual para Contabilidad</summary>
+			<table>
+			<tbody>
+				<tr>
+					<th scope="row">Descripción</th>
+					<td>El sistema deberá generar un resumen mensual de las novedades relacionadas con la asistencia y las
+						horas de los colaboradores para apoyar el proceso de nómina.</td>
+				</tr>
+				<tr>
+					<th scope="row">Entradas</th>
+					<td>Información procesada durante el período comprendido del día 21 de un mes al día 20 del siguiente.
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">Proceso esperado</th>
+					<td>Agrupar la información de cada colaborador conforme al corte mensual utilizado por Netplus y
+						prepararla para su revisión por Contabilidad.</td>
+				</tr>
+				<tr>
+					<th scope="row">Salidas</th>
+					<td>Reporte consolidado mensual que sirva como insumo del proceso contable.</td>
+				</tr>
+				<tr>
+					<th scope="row">Criterio de verificación (propuesto)</th>
+					<td>El reporte utiliza un corte 21–20 y sus valores coinciden con los registros de prueba.</td>
+				</tr>
+				<tr>
+					<th scope="row">Referencia de la reunión</th>
+					<td>07:08–08:02; 11:42–13:14; 16:08–16:36.</td>
+				</tr>
+				<tr>
+					<th scope="row">Prioridad inicial</th>
+					<td>Alta (propuesta)</td>
+				</tr>
+				<tr>
+					<th scope="row">Punto por validar</th>
+					<td>Contabilidad actualmente digita la información. Se debe confirmar si requiere un archivo con formato
+						importable y sus columnas exactas.</td>
+				</tr>
+			</tbody>
+		</table>
+		</details>
+		<details>
+			<summary>RF-11. Indicador de personal activo (headcount) por área</summary>
+			<table>
+			<tbody>
+				<tr>
+					<th scope="row">Descripción</th>
+					<td>El sistema deberá presentar la cantidad de colaboradores de la empresa y por área para consulta de
+						Desarrollo Organizacional.</td>
+				</tr>
+				<tr>
+					<th scope="row">Entradas</th>
+					<td>Datos de colaboradores y de su pertenencia a cada área, con referencia al período de análisis.</td>
+				</tr>
+				<tr>
+					<th scope="row">Proceso esperado</th>
+					<td>Contar los colaboradores correspondientes a la fecha o período seleccionado, conforme a un criterio
+						de personal activo acordado.</td>
+				</tr>
+				<tr>
+					<th scope="row">Salidas</th>
+					<td>Indicador de headcount general y desglosado por área.</td>
+				</tr>
+				<tr>
+					<th scope="row">Criterio de verificación (propuesto)</th>
+					<td>Los conteos mostrados corresponden a una lista de colaboradores de referencia validada.</td>
+				</tr>
+				<tr>
+					<th scope="row">Referencia de la reunión</th>
+					<td>08:51–09:18.</td>
+				</tr>
+				<tr>
+					<th scope="row">Prioridad inicial</th>
+					<td>Alta (propuesta)</td>
+				</tr>
+				<tr>
+					<th scope="row">Punto por validar</th>
+					<td>Netplus indicó que sería necesario alimentar estos indicadores desde el inicio del sistema; falta
+						acordar la fuente de altas, bajas y movimientos.</td>
+				</tr>
+			</tbody>
+		</table>
+		</details>
+		<details>
+			<summary>RF-12. Indicador de rotación general y por área</summary>
+			<table>
+			<tbody>
+				<tr>
+					<th scope="row">Descripción</th>
+					<td>El sistema deberá permitir conocer el índice de rotación de personal de toda la empresa y de cada
+						área.</td>
+				</tr>
+				<tr>
+					<th scope="row">Entradas</th>
+					<td>Información histórica de ingresos, salidas, movimientos de personal y período de análisis, según los
+						datos disponibles.</td>
+				</tr>
+				<tr>
+					<th scope="row">Proceso esperado</th>
+					<td>Calcular y presentar el indicador usando la fórmula y los criterios organizacionales que se definan
+						con Netplus.</td>
+				</tr>
+				<tr>
+					<th scope="row">Salidas</th>
+					<td>Índice de rotación general y por departamento para apoyar el análisis de Desarrollo Organizacional.
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">Criterio de verificación (propuesto)</th>
+					<td>Los resultados coinciden con ejemplos de cálculo aprobados por la representante de la empresa.</td>
+				</tr>
+				<tr>
+					<th scope="row">Referencia de la reunión</th>
+					<td>08:51–09:18.</td>
+				</tr>
+				<tr>
+					<th scope="row">Prioridad inicial</th>
+					<td>Alta (propuesta)</td>
+				</tr>
+				<tr>
+					<th scope="row">Punto por validar</th>
+					<td>No se especificó fórmula, período mínimo, tratamiento de traslados entre áreas ni captura de causas
+						de salida.</td>
+				</tr>
+			</tbody>
+		</table>
+		</details>
+		
+		</section>
+		<section id="no-funcionales">
+<h2>2. Requisitos no funcionales y restricciones</h2>
+		<p>Los requisitos no funcionales describen condiciones de uso, presentación e interoperabilidad. Se distingue lo
+			manifestado por Netplus de las medidas de calidad que nuestro equipo considera necesarias y que deberán
+			acordarse antes de tratarlas como obligatorias.</p>
+		<details>
+			<summary>RNF-01. Identidad visual corporativa</summary>
+			<table>
+			<tbody>
+				<tr>
+					<th scope="row">Especificación</th>
+					<td>La interfaz de la solución deberá emplear los colores e identidad gráfica que proporcione Netplus.
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">Naturaleza</th>
+					<td>Expresado por Netplus</td>
+				</tr>
+				<tr>
+					<th scope="row">Referencia de la reunión</th>
+					<td>03:43–04:13</td>
+				</tr>
+				<tr>
+					<th scope="row">Pendiente</th>
+					<td>Pendiente recibir la guía o los valores oficiales de marca.</td>
+				</tr>
+			</tbody>
+		</table>
+		</details>
+		<details>
+			<summary>RNF-02. Compatibilidad con los archivos de la fuente actual</summary>
+			<table>
+			<tbody>
+				<tr>
+					<th scope="row">Especificación</th>
+					<td>La solución deberá poder trabajar con los archivos de Excel generados por el sistema existente,
+						respetando su organización real y los campos utilizados para cada reporte.</td>
+				</tr>
+				<tr>
+					<th scope="row">Naturaleza</th>
+					<td>Derivado directamente del flujo mostrado</td>
+				</tr>
+				<tr>
+					<th scope="row">Referencia de la reunión</th>
+					<td>11:42–13:14; 18:09–22:03</td>
+				</tr>
+				<tr>
+					<th scope="row">Pendiente</th>
+					<td>La estructura exacta debe verificarse con archivos reales; no se ha aprobado una especificación de
+						columnas.</td>
+				</tr>
+			</tbody>
+		</table>
+		</details>
+		<details>
+			<summary>RNF-03. Oportunidad de la información diaria</summary>
+			<table>
+			<tbody>
+				<tr>
+					<th scope="row">Especificación</th>
+					<td>La solución deberá permitir que Recursos Humanos consulte al inicio de la jornada la información
+						completa correspondiente al día anterior, conforme al desfase operativo de un día planteado por
+						Netplus.</td>
+				</tr>
+				<tr>
+					<th scope="row">Naturaleza</th>
+					<td>Expresado por Netplus</td>
+				</tr>
+				<tr>
+					<th scope="row">Referencia de la reunión</th>
+					<td>10:35–10:49</td>
+				</tr>
+				<tr>
+					<th scope="row">Pendiente</th>
+					<td>La frecuencia exacta de carga y la responsabilidad de actualizar los datos aún deben definirse.</td>
+				</tr>
+			</tbody>
+		</table>
+		</details>
+		<details>
+			<summary>RNF-04. Claridad y facilidad de consulta</summary>
+			<table>
+			<tbody>
+				<tr>
+					<th scope="row">Especificación</th>
+					<td>Los resúmenes y tableros deberían permitir que los usuarios identifiquen las novedades relevantes sin
+						tener que interpretar manualmente todos los registros de marcación.</td>
+				</tr>
+				<tr>
+					<th scope="row">Naturaleza</th>
+					<td>Derivado de la necesidad del negocio</td>
+				</tr>
+				<tr>
+					<th scope="row">Referencia de la reunión</th>
+					<td>00:00–01:48; 06:26–07:07</td>
+				</tr>
+				<tr>
+					<th scope="row">Pendiente</th>
+					<td>Se deben definir criterios medibles de usabilidad con los usuarios; no se indicó un número máximo de
+						clics.</td>
+				</tr>
+			</tbody>
+		</table>
+		</details>
+		<details>
+			<summary>RNF-05. Protección de información del personal</summary>
+			<table>
+			<tbody>
+				<tr>
+					<th scope="row">Especificación</th>
+					<td>Se propone controlar el acceso y proteger los datos personales, de asistencia y de nómina de acuerdo
+						con las responsabilidades de los usuarios.</td>
+				</tr>
+				<tr>
+					<th scope="row">Naturaleza</th>
+					<td>Propuesta del equipo por la sensibilidad de los datos</td>
+				</tr>
+				<tr>
+					<th scope="row">Referencia de la reunión</th>
+					<td>Usuarios identificados: 03:16–03:41</td>
+				</tr>
+				<tr>
+					<th scope="row">Pendiente</th>
+					<td>No quedaron definidos perfiles de autenticación, permisos exactos ni mecanismos obligatorios de
+						seguridad.</td>
+				</tr>
+			</tbody>
+		</table>
+		</details>
+		<details>
+			<summary>RNF-06. Integridad en actualizaciones de información</summary>
+			<table>
+			<tbody>
+				<tr>
+					<th scope="row">Especificación</th>
+					<td>Se propone evitar que nuevas cargas generen duplicaciones o alteren registros de asistencia ya
+						procesados sin un criterio definido de actualización.</td>
+				</tr>
+				<tr>
+					<th scope="row">Naturaleza</th>
+					<td>Propuesta técnica para confiabilidad</td>
+				</tr>
+				<tr>
+					<th scope="row">Referencia de la reunión</th>
+					<td>22:19–23:44</td>
+				</tr>
+				<tr>
+					<th scope="row">Pendiente</th>
+					<td>La reunión no fijó una política de deduplicación ni manejo de reemplazos; debe acordarse.</td>
+				</tr>
+			</tbody>
+		</table>
+		</details>
+		
+		</section>
+		<section id="prototipos">
+		<h2>3. Prototipos del sistema</h2>
+		<p>A continuación se muestran los primeros prototipos (versión V1) del tablero de asistencia y nómina de NetPlus.
+			Corresponden a las pantallas de resumen, importación, validación de archivos, colaboradores y reporte mensual.
+			Haz clic en una imagen para verla en tamaño completo.</p>
+		<p>El diseño completo puede consultarse en Figma:
+			<a href="https://www.figma.com/design/a7QDg4OEHfnb5ch4bqEiie/NetPlus-%E2%80%94-Dashboard-de-N%C3%B3mina-%C2%B7-V1?node-id=0-1&amp;t=65mocphE4NKRXISh-1" target="_blank" rel="noopener">Prototipo de NetPlus en Figma</a>.</p>
+		<figure>
+			<a href="img/prototipo-1.png" target="_blank" rel="noopener">
+				<img src="img/prototipo-1.png" alt="Prototipo de la pantalla Resumen de asistencia">
+			</a>
+			<figcaption><strong>Prototipo 1. Resumen de asistencia.</strong> Pantalla principal. Muestra los indicadores clave del período (colaboradores, asistencias, puntualidad y ausencias), la tendencia diaria de asistencia, las novedades por revisar y las importaciones recientes.</figcaption>
+		</figure>
+
+		<figure>
+			<a href="img/prototipo-2.png" target="_blank" rel="noopener">
+				<img src="img/prototipo-2.png" alt="Prototipo de la pantalla Importar archivo">
+			</a>
+			<figcaption><strong>Prototipo 2. Importar archivo.</strong> Pantalla para cargar el archivo XLSX exportado desde Z-BioTime, arrastrándolo o seleccionándolo. Indica el formato y el tamaño máximo (20 MB) e incluye el historial de importaciones recientes.</figcaption>
+		</figure>
+
+		<figure>
+			<a href="img/prototipo-3.png" target="_blank" rel="noopener">
+				<img src="img/prototipo-3.png" alt="Prototipo de la pantalla Validación de archivo">
+			</a>
+			<figcaption><strong>Prototipo 3. Validación de archivo.</strong> Resumen previo a incorporar los registros: filas revisadas, registros válidos, duplicados e incompletos. Lista las novedades encontradas, que quedan para revisión manual.</figcaption>
+		</figure>
+
+		<figure>
+			<a href="img/prototipo-4.png" target="_blank" rel="noopener">
+				<img src="img/prototipo-4.png" alt="Prototipo de la pantalla Colaboradores">
+			</a>
+			<figcaption><strong>Prototipo 4. Colaboradores.</strong> Listado de colaboradores con búsqueda y filtros por departamento y estado. Muestra puntualidad, asistencia y estado de cada persona, con paginación y opción de exportar la lista.</figcaption>
+		</figure>
+
+		<figure>
+			<a href="img/prototipo-5.png" target="_blank" rel="noopener">
+				<img src="img/prototipo-5.png" alt="Prototipo de la pantalla Reporte mensual">
+			</a>
+			<figcaption><strong>Prototipo 5. Reporte mensual.</strong> Consolidado mensual para la preparación de nómina: resumen del período, asistencia por semana, novedades del mes y vista previa por colaborador, con exportación a PDF y Excel.</figcaption>
+		</figure>
+
+		</section>
+		<section id="tecnologias">
+		<h2>4. Tecnologías que se usarán</h2>
+		<p>Para el desarrollo del sistema se emplearán las tecnologías que se detallan a continuación. Se eligieron por su
+			capacidad para leer los archivos Excel exportados desde la plataforma de marcaciones y para mostrar la
+			información en un tablero web. Donde se indican dos alternativas, la decisión final se tomará durante el
+			desarrollo.</p>
+
+		<h3>Backend</h3>
+		<ul>
+			<li>Lenguaje: Go</li>
+			<li>Framework HTTP: <code>chi</code> o <code>Gin</code></li>
+			<li>Lectura de Excel: <a href="https://github.com/xuri/excelize" target="_blank" rel="noopener">Excelize</a></li>
+			<li>API: REST con JSON</li>
+			<li>Base de datos: PostgreSQL</li>
+			<li>ORM/query builder: SQLC o GORM</li>
+			<li>Procesamiento en segundo plano: workers con Redis</li>
+			<li>Autenticación: sesiones con cookies seguras o JWT</li>
+			<li>Validación de datos: <code>go-playground/validator</code></li>
+			<li>Documentación de la API: OpenAPI/Swagger</li>
+		</ul>
+		<p>Excelize se utilizará para leer los archivos <code>.xlsx</code>. Permite abrir el archivo desde un
+			<code>io.Reader</code> con <code>OpenReader</code> y recorrer las hojas fila por fila con <code>Rows</code>,
+			de modo que no es necesario cargar todo el Excel en memoria.</p>
+
+		<h3>Frontend</h3>
+		<ul>
+			<li>Framework: React</li>
+			<li>Lenguaje: TypeScript</li>
+			<li>Herramienta de compilación: Vite</li>
+			<li>Estilos: Tailwind CSS</li>
+			<li>Componentes de interfaz: shadcn/ui o MUI</li>
+			<li>Gráficos: Apache ECharts</li>
+			<li>Estado global: Zustand</li>
+			<li>Peticiones HTTP: TanStack Query</li>
+			<li>Tablas: TanStack Table</li>
+			<li>Formularios: React Hook Form + Zod</li>
+		</ul>
+		<p>Apache ECharts se usará para los gráficos del tablero (barras, líneas, circulares y de áreas), con tooltips y
+			elementos interactivos.</p>
+
+		<h3>Infraestructura</h3>
+		<ul>
+			<li>Contenedores: Docker</li>
+			<li>Orquestación local: Docker Compose</li>
+			<li>Proxy: Nginx o Caddy</li>
+			<li>Archivos Excel: almacenamiento local en desarrollo; S3, MinIO o Azure Blob en producción</li>
+			<li>CI/CD: GitHub Actions</li>
+			<li>Despliegue: Railway, Render, <a href="https://fly.io/" target="_blank" rel="noopener">Fly.io</a>, AWS o Azure</li>
+		</ul>
+
+		<h3>Arquitectura</h3>
+		<pre><code>React + TypeScript
+        |
+        | REST API
+        v
+Go API
+        |
+        +-- Excelize: lee y valida Excel
+        |
+        +-- Worker: procesa datos
+        |
+        +-- PostgreSQL: guarda datos y configuraciones
+        |
+        +-- Redis: trabajos y cache
+        |
+        +-- S3/MinIO: almacena archivos originales</code></pre>
+
+		<h3>Flujo de carga de archivos</h3>
+		<ol>
+			<li>El usuario sube un archivo <code>.xlsx</code>.</li>
+			<li>El backend valida:
+				<ul>
+					<li>Extensión y tipo MIME.</li>
+					<li>Tamaño máximo.</li>
+					<li>Hojas disponibles.</li>
+					<li>Columnas requeridas.</li>
+					<li>Tipos de datos.</li>
+				</ul>
+			</li>
+			<li>El archivo original se guarda en S3 o MinIO.</li>
+			<li>Se crea un trabajo de procesamiento.</li>
+			<li>Un worker lee las filas con Excelize.</li>
+			<li>Los datos se normalizan y se guardan en PostgreSQL.</li>
+			<li>El frontend consulta las métricas agregadas.</li>
+			<li>ECharts muestra los gráficos.</li>
+		</ol>
+
+		<h3>Endpoints de la API</h3>
+		<pre><code>POST   /api/files
+GET    /api/files
+GET    /api/files/:id/status
+DELETE /api/files/:id
+
+GET    /api/dashboards
+POST   /api/dashboards
+GET    /api/dashboards/:id
+
+GET    /api/dashboards/:id/metrics
+GET    /api/dashboards/:id/charts</code></pre>
+
+		<h3>Estructura del proyecto</h3>
+		<pre><code>project/
+├── backend/
+│   ├── cmd/api/
+│   ├── internal/
+│   │   ├── auth/
+│   │   ├── files/
+│   │   ├── excel/
+│   │   ├── dashboards/
+│   │   ├── metrics/
+│   │   └── workers/
+│   ├── migrations/
+│   └── go.mod
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── charts/
+│   │   ├── api/
+│   │   └── stores/
+│   └── package.json
+├── compose.yaml
+└── README.md</code></pre>
+
+		<h3>Resumen del stack</h3>
+		<pre><code>Backend:      Go + Chi + Excelize + PostgreSQL
+Frontend:     React + TypeScript + Vite
+UI:           Tailwind CSS + shadcn/ui
+Gráficos:     Apache ECharts
+Estado/API:   Zustand + TanStack Query
+Archivos:     MinIO
+Tareas:       Redis + worker en Go
+Despliegue:   Docker Compose</code></pre>
+		<p>En la primera versión del sistema, los archivos podrán procesarse directamente, sin Redis. Los workers se
+			incorporarán cuando el tamaño de los Excel o el número de usuarios lo requiera. Se decidió no usar Power BI
+			embebido, por el costo y la dependencia de un servicio externo, ni una arquitectura de microservicios: el
+			backend será un solo servicio modular en Go.</p>
+		</section>
+	</main>
+</body>
+
+</html>
